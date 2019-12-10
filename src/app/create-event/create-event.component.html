@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="container">
+    <div class="card my-5">
+      <div class="card-header">
+        Create Activities
+      </div>
+      <div class="card-body">
+          <form #createEvent="ngForm" name="form" (ngSubmit)="createEvent.valid && onSubmit()">
+            <div class="form-row mb-3">
+              <div class="col-md-6">
+                <label for="activityName">Name of Activity</label>
+                <input [(ngModel)]="createEventObj.activityName" type="text" class="form-control is-vaild" id="activityName" name="activityName" placeholder="activity Name" value="" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-6">
+                  <label for="location">Location</label>
+                  <select class="custom-select" id="location" name="location" [(ngModel)]="createEventObj.location">
+                      <option >Choose...</option>
+                      <option *ngFor="let key of stateObjArr" [value]="key.name">{{key.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row mb-3">
+                <div class="col-md-6">
+                  <label for="dateEvent">Date</label>
+                  <angular2-date-picker [(ngModel)]="createEventObj.dateEvent" id="dateEvent" name="dateEvent" [settings]="settings"  ></angular2-date-picker>{{date}}
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <!-- (ngModelChange)="onDateSelect($event)" -->
+                <div class="col-md-6">
+                    <label for="amount">Entry fee</label>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">₹</span>
+                      </div>
+                      <input type="number" class="form-control" name="amount" aria-label="Amount (to the nearest rupees)" [(ngModel)]="createEventObj.amount">
+                      <div class="input-group-append">
+                        <span class="input-group-text">.00</span>
+                      </div>
+                    </div>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+              </div>
+            <div class="form-row mb-3">
+                <div class="col-md-6">
+                  <label for="description">Description</label>
+                  <textarea class="form-control" id="description" name="description" rows="3" placeholder="Event Description" [(ngModel)]="createEventObj.description"></textarea>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="imageUrl">Url for cover</label>
+                  <input type="text" class="form-control" id="imageUrl" name="imageUrl" [(ngModel)]="createEventObj.imageUrl">
+                </div>
+            </div>
+            <button class="btn btn-success">Submit</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
++
+

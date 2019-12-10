@@ -1,0 +1,15 @@
+<div class="col-md-12 pt-5">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let e of specialEvent">
+      <div class="card" style="width: 18rem;">
+        <img src="https://steamcdn-a.akamaihd.net/steam/apps/770460/ss_78c25c027f5c45be1b9a1f727f72bb74ada536dc.1920x1080.jpg?t=1530132030" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ e.name }}</h5>
+          <p class="card-text">{{ e.description }}</p>
+          <p class="card-text">Event Date: {{ e.date | date }}</p>
+          <a href="#" class="btn btn-primary">Book Tickets</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
