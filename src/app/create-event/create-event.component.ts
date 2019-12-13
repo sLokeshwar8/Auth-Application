@@ -55,18 +55,7 @@ export class CreateEventComponent implements OnInit {
    }
 
   ngOnInit() {
-    DatePicker.prototype.ngOnInit = function() {
-        this.settings = Object.assign(this.defaultSettings, this.settings);
-        if (this.settings.defaultOpen) {
-            this.popover = true;
-        }
-            this.date = new Date();
-            this.settings = {
-                timePicker: false,
-                format: 'dd-MM-yyyy',
-                defaultOpen: true
-            }
-        };
+
   }
 
   onSubmit(){

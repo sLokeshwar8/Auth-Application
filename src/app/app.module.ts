@@ -13,8 +13,8 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './Guard/auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { CreateEventComponent } from './create-event/create-event.component';
-import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 import { SummaryPipe } from './pipe/summary.pipe';
+
 
 
 
@@ -33,7 +33,7 @@ import { SummaryPipe } from './pipe/summary.pipe';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    AngularDateTimePickerModule
+    
     
   ],
   providers: [AuthService,AuthGuard,

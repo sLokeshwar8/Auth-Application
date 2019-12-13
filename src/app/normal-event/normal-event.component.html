@@ -1,11 +1,11 @@
 <div class="col-md-12" style="padding-bottom: 100px;">
   <div class="row">
-    <div class="col-md-4 pt-5" *ngFor="let e of events">
-      <div class="card" style="width: 18rem;">
-        <div class="imageDiv"><img src="{{ e.imageUrl }}" class="card-img-top" alt="cover_banner" style="height: 100%;"></div>
+    <div class="col-md-4 col-sm-3 pt-5" *ngFor="let e of events">
+      <div class="card">
+        <div class="imageDiv" [style.background-image]="'url(' + e.imageUrl + ')'"></div>
         <div class="card-body" style="height: 250px;overflow: hidden;">
-          <h5 class="card-title" style="height: 50px;">{{ e.activityName }}</h5>
-          <p class="card-text" style="font-size: 14px;">{{ e.description | summary:50 }}</p>
+          <h6 class="card-title" style="height: 50px;"><b>{{ e.activityName  }}</b></h6>
+          <p class="card-text" style="font-size: 14px;height: 70px;">{{ e.description | summary:50 }}</p>
           <p class="card-text">Event Date: {{ e.dateEvent  | date }}</p>
         </div>
       </div>

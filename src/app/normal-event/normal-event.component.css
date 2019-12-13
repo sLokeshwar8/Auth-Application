@@ -1,4 +1,8 @@
 .imageDiv{
-    height: 170px;
     overflow: hidden;
+    max-width: 280px;
+    height: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }

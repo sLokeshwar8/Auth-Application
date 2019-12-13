@@ -9,10 +9,14 @@ import { AuthService } from './auth.service'
 export class AppComponent {
   title = 'AuthProject';
   navShow = false;
+  dropD1 = false;
   constructor(private _authService : AuthService){}
 
   navShowToggle(){
       this.navShow = !this.navShow;
   }
+  dropdownShowToggle(){
+    this.dropD1 = !this.dropD1;
+}
 
 }

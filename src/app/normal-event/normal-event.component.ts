@@ -8,7 +8,7 @@ import { EventService } from '../event.service';
 })
 export class NormalEventComponent implements OnInit {
 
-  events = []
+  events = [];
   constructor(private event : EventService) { }
 
   ngOnInit() {
@@ -17,6 +17,7 @@ export class NormalEventComponent implements OnInit {
     .subscribe(
       res => {
         this.events = res
+        console.log(this.events)
       }
     )
 

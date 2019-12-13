@@ -1,0 +1,6 @@
+.darkGray{
+    color: gray !important;
+}
+.flexColumn{
+    flex-direction: column;
+}
