@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NormalEventComponent } from './normal-event/normal-event.component';
+import { NormalEventComponent } from './events/normal-event.component';
 import { SpecialEventComponent } from './special-event/special-event.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CreateEventComponent } from './create-event/create-event.component';
-import { AuthGuard } from './Guard/auth.guard';
+import { UpdateEventComponent } from './update-event/update-event.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes : Routes = [
     {
@@ -33,6 +34,11 @@ const routes : Routes = [
     {
         path: 'create-event',
         component: CreateEventComponent
+    },
+    {
+        path: 'update-event',
+        component: UpdateEventComponent,
+        canActivate : [AuthGuard]
     }
 ]
 

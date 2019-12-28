@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { DatePicker } from 'angular2-datetimepicker';
-import { EventService } from '../event.service'
+import { EventService } from '../services/event.service'
+import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
+import { AlertService } from 'ngx-alerts';
+import { Event } from '../share/Event.model';
 
 @Component({
   selector: 'app-create-event',
@@ -10,8 +11,7 @@ import { EventService } from '../event.service'
 })
 export class CreateEventComponent implements OnInit {
 
-  createEventObj = {};
-
+  createEventObj:Event;
   stateObjArr = [
         {
             "id": "1",
@@ -50,20 +50,42 @@ export class CreateEventComponent implements OnInit {
         }
     ]
     
-  constructor(private http : HttpClient,private eventService : EventService) {
+  constructor(
+              private eventService : EventService,
+              private alertService: AlertService) {
 
    }
 
   ngOnInit() {
-
   }
 
-  onSubmit(){
-      console.log(this.createEventObj)
-     this.eventService.createNewEvent(this.createEventObj)
-     .subscribe( (res) => {
-        console.log(res)
+  public myDatePickerOptions: IMyDpOptions = {
+    // other options...
+    dateFormat: 'yyyy-mm-dd',
+  };
+
+
+  onSubmit(value:any,ngForm){
+      
+      this.createEventObj = value
+      this.eventService.createNewEvent(this.createEventObj)
+      .subscribe(res => {
+      this.showAlerts()
+      ngForm.reset();
+     },
+     err => {
+       this.showError(err)
+         console.log(err)
      })
   }
+
+  showAlerts(): void{
+        // For normal messages
+        this.alertService.success('Event Created Successfully !!');
+    } 
+  showError(error): void{
+        // For normal messages
+        this.alertService.info('Error !!'+ error);
+    }
 
 }

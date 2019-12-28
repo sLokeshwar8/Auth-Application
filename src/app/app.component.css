@@ -4,3 +4,12 @@
 .flexColumn{
     flex-direction: column;
 }
+.dropdown-toggle:after { 
+    content: none 
+}
+.navbarStyle{
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 3px;
+}

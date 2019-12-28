@@ -24,6 +24,8 @@
     "angular2-datetimepicker": "^1.1.1",
     "bootstrap": "^4.0.0",
     "core-js": "^2.5.4",
+    "mydatepicker": "^2.6.7",
+    "ngx-alerts": "^4.0.0",
     "rxjs": "6.0.0",
     "zone.js": "~0.8.26"
   },

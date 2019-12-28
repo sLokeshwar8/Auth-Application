@@ -1,0 +1,12 @@
+<div class="col-md-12" style="padding-bottom: 100px;">
+  <div class="row">
+    <div class="col-md-4 col-sm-12 col-xs-12 pt-5">
+      <ul class="list-group">
+        <a *ngFor="let event of events" (click)="onSelected(event)"><li class="list-group-item">{{ event.activityName  }}</li></a>
+      </ul>
+    </div>
+    <div class="col-md-8 col-sm-12 col-xs-12 pt-5">
+      <app-edit-event [createEventObj]="singleEvent" [isSelectedInfo]="isSelected"></app-edit-event>
+   </div>
+  </div>
+</div>

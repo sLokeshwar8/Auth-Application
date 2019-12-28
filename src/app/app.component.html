@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbarStyle">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" 
         data-toggle="collapse" data-target="#navbarSupportedContent" 
@@ -12,17 +12,14 @@
         <div class="collapse navbar-collapse" [ngClass]="{ 'show': navShow }" navShow id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" routerLink="/events" routerLinkActive="active">Events <span class="sr-only">(current)</span></a>
+              <a class="nav-link" routerLink="/events" routerLinkActive="active" (click)="navShowToggle()">Events <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/special-events" routerLinkActive="active">Special Events</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/create-event" routerLinkActive="active">Create Activities</a>
+              <a class="nav-link" routerLink="/special-events" routerLinkActive="active" (click)="navShowToggle()">Special Events</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
-            <!-- <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/login" *ngIf="!_authService.loggedIn()" routerLinkActive="active">Login</a>
                 </li>
@@ -32,35 +29,33 @@
                 <li class="nav-item">
                   <a class="nav-link" routerLink="/login" *ngIf="_authService.loggedIn()" routerLinkActive="active" (click)="_authService.loggedOut()">Logout</a>
               </li>
-            </ul> -->
-            
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" (click)="dropdownShowToggle()" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
+              <li class="nav-link">
+                <div class="btn-group">
+                  <button type="button" (click)="dropdownShowToggle()" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 4px 4px 0px 4px;
+                  height: 34px;">
+                    <i class="material-icons">settings</i>
+                  </button>
+                  <div [ngClass]="{ 'show': dropD1 }" class="dropdown-menu dropdown-menu-right">
+                    <a class="nav-link darkGray" routerLink="/update-event" routerLinkActive="active" (click)="dropdownShowToggle()">Update Events</a> 
+                    <a class="nav-link darkGray" routerLink="/create-event" routerLinkActive="active" (click)="dropdownShowToggle()">Create Activities</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <!-- <div class="btn-group">
+              <button type="button" (click)="dropdownShowToggle()" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 4px 4px 0px 4px;
+              height: 34px;">
+                <i class="material-icons">settings</i>
               </button>
-              <div [ngClass]="{ 'show': dropD1 }" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <ul class="navbar-nav mr-auto flexColumn">
-                      <li class="nav-item">
-                          <a class="nav-link darkGray" routerLink="/login" *ngIf="!_authService.loggedIn()" routerLinkActive="active">Login</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link darkGray" routerLink="/register" *ngIf="!_authService.loggedIn()" routerLinkActive="active">Register</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link darkGray" routerLink="/login" *ngIf="_authService.loggedIn()" routerLinkActive="active" (click)="_authService.loggedOut()">Logout</a>
-                    </li>
-                  </ul>
+              <div [ngClass]="{ 'show': dropD1 }" class="dropdown-menu dropdown-menu-right">
+                <a class="nav-link darkGray" routerLink="/update-event" routerLinkActive="active" (click)="dropdownShowToggle()">Update Events</a> 
+                <a class="nav-link darkGray" routerLink="/create-event" routerLinkActive="active" (click)="dropdownShowToggle()">Create Activities</a>
               </div>
-            </div>
-            <ul class="navbar-nav mr-auto" *ngIf="false">
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/events" routerLinkActive="active">Logout</a>
-                    </li>
-                </ul>
+            </div>  -->
+
           </form>
         </div>
       </nav>
-<div class="container">
-    <router-outlet></router-outlet>
-</div>
-
+      <div class="container">
+          <router-outlet></router-outlet>
+      </div>
