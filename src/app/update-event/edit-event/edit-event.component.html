@@ -5,15 +5,15 @@
         Update Activities
       </div>
       <div class="card-body">
-          <form #updateEvent="ngForm" name="form" (ngSubmit)="updateEvent.valid && onSubmit(updateEvent.value)">
+          <form #updateEvent="ngForm" name="form" (ngSubmit)="updateEvent.valid && onSubmit(updateEvent.value,createEventObj._id)">
             <div class="form-row mb-3">
-              <div class="col-md-6" [hidden]=true>
+              <!-- <div class="col-md-6" [hidden]=true>
                 <label for="_id">Id</label>
                 <input type="text" class="form-control is-vaild" id="_id" name="_id" required ngModel [(ngModel)]="createEventObj._id">
                 <div class="valid-feedback">
                   Looks good!
                 </div>
-              </div>
+              </div> -->
               <div class="col-md-6">
                 <label for="activityName">Name of Activity</label>
                 <input type="text" class="form-control is-vaild" id="activityName" name="activityName" required ngModel [(ngModel)]="createEventObj.activityName">

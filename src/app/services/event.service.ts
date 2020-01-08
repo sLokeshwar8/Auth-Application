@@ -26,8 +26,9 @@ export class EventService {
     return this.http.post<any>(this._createNewEvent,eventObj)
   }
 
-  updateExistingEvent(eventObj){
-    return this.http.put<any>(this._updateEvent+"/"+eventObj._id,eventObj);
+  updateExistingEvent(eventObj,_id){
+    console.log(_id)
+    return this.http.put<any>(this._updateEvent+"/"+_id,eventObj);
   }
 
 }

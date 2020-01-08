@@ -43,7 +43,7 @@ import { ToggleDropdownDirective } from './share/toggleDropdown.directive';
     HttpClientModule,
     MyDatePickerModule,
     BrowserAnimationsModule,
-    AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'})
+    AlertModule.forRoot({maxMessages: 5, timeout: 2000, position: 'right'})
   ],
   providers: [AuthService,AuthGuard,
     {

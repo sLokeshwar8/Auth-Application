@@ -3,6 +3,7 @@ import { EventService } from 'src/app/services/event.service';
 import { AlertService } from 'ngx-alerts';
 import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
 import { Event } from '../../share/Event.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-event',
@@ -53,7 +54,8 @@ export class EditEventComponent implements OnInit {
 
   constructor(
     private alertService: AlertService,
-    private eventService : EventService ) {
+    private eventService : EventService, 
+    private router : Router) {
   }
 
   ngOnInit() {
@@ -66,20 +68,26 @@ export class EditEventComponent implements OnInit {
 
   showAlerts(): void{
        // For normal messages
-       this.alertService.info('Event Created Successfully !!');
+       this.alertService.success('Event Updated Successfully !!');
   } 
   showError(error): void{
       // For normal messages
-      this.alertService.info('Error !!'+ error);
+      this.alertService.danger('Error !!'+ error);
   }
 
-  onSubmit(value: any){
-    console.log(value)
+  onSubmit(value: any,eventId){
+    console.log(eventId)
     this.updateEventObj = value
-    this.eventService.updateExistingEvent(this.updateEventObj)
+    this.eventService.updateExistingEvent(this.updateEventObj,eventId)
     .subscribe(res => {
-        console.log(res)
+      this.showAlerts();
+      setTimeout(()=>{
+        window.location.reload();
+      },3000)
+      
+      console.log(res)
     },err => {
+      this.showError(err)
         console.log(err)
     })
   }

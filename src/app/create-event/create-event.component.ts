@@ -85,7 +85,7 @@ export class CreateEventComponent implements OnInit {
     } 
   showError(error): void{
         // For normal messages
-        this.alertService.info('Error !!'+ error);
+        this.alertService.danger('Error !!'+ error);
     }
 
 }
