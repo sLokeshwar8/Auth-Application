@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../services/event.service'
+import { EventService } from '../../services/event.service'
 import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
 import { AlertService } from 'ngx-alerts';
-import { Event } from '../share/Event.model';
+import { Event } from '../../share/Event.model';
 
 @Component({
   selector: 'app-create-event',

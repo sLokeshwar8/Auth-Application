@@ -22,7 +22,8 @@ export class RegisterComponent implements OnInit {
    .subscribe(
      res => {
       localStorage.setItem('token',res.token)
-      this._router.navigate(['/special-events'])
+      localStorage.setItem('username',res.username)
+      //this._router.navigate(['/special-events'])
       console.log(res)
      },
      err => {

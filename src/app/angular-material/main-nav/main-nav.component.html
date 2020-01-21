@@ -1,0 +1,79 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary" [ngStyle]="{'position': (isHandset$ | async) ? 'static' : 'fixed'}">Menu
+      <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" *ngIf="!(isHandset$ | async)">
+        <ul fxLayout="row" fxLayoutGap="20px" style="float: right;">
+          <li>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>settings</mat-icon>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">Login</button>
+                <button mat-menu-item *ngIf="!_authService.loggedIn()" routerLink="/register" routerLinkActive="active">Register</button>
+                <button mat-menu-item *ngIf="_authService.loggedIn()" routerLink="/login" routerLinkActive="active" (click)="_authService.loggedOut()">Logout</button>
+              </mat-menu>
+            </button>
+          </li>
+          <li>
+            <button mat-icon-button matTooltip='For any query mail us "lokeshwarsahu.47@gmail.com"'
+            aria-label="Button that displays a tooltip when focused or hovered over">
+              <mat-icon >help outline</mat-icon>
+            </button>
+          </li>
+        </ul>
+      </div>
+  </mat-toolbar>
+
+    <mat-nav-list [ngStyle]="{'padding-top': (isHandset$ | async) ? '0px' : '63px'}">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ username }}</mat-card-title>
+          <mat-card-subtitle>Pro user</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+      <a mat-list-item  routerLink="/events" [routerLinkActive]="['is-active']">Events</a>
+      <a mat-list-item  routerLink="/special-events" [routerLinkActive]="['is-active']">Special Event</a>
+      <a mat-list-item  routerLink="/create-event" [routerLinkActive]="['is-active']">Create Event</a>
+      <a mat-list-item  routerLink="/update-event" [routerLinkActive]="['is-active']">Update Event</a>
+      <ul fxLayout="row" fxLayoutGap="20px" *ngIf="(isHandset$ | async)" style="padding-left: 5px;">
+        <li>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>settings</mat-icon>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">Login</button>
+              <button mat-menu-item *ngIf="!_authService.loggedIn()" routerLink="/register" routerLinkActive="active">Register</button>
+              <button mat-menu-item *ngIf="_authService.loggedIn()" routerLink="/login" routerLinkActive="active" (click)="_authService.loggedOut()">Logout</button>
+            </mat-menu>
+          </button>
+        </li>
+        <li>
+          <button mat-icon-button>
+            <mat-icon>help outline</mat-icon>
+          </button>
+        </li>
+      </ul>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+    </mat-toolbar>   
+    <!-- Add Content Here [ngClass]="{hidden: !(isHandset$ | async)}"-->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+

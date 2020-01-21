@@ -2,8 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { EventService } from 'src/app/services/event.service';
 import { AlertService } from 'ngx-alerts';
 import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
-import { Event } from '../../share/Event.model';
-import { Router } from '@angular/router';
+import { Event } from '../../../share/Event.model';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { EventModel } from '../../../event.model';
+import { Location } from "@angular/common";
+import { DeleteEventModalComponent } from 'src/app/share/delete-event-modal/delete-event-modal.component';
 
 @Component({
   selector: 'app-edit-event',
@@ -14,6 +18,7 @@ export class EditEventComponent implements OnInit {
   updateEventObj :Event;
   @Input('createEventObj') createEventObj
   @Input() isSelectedInfo : Boolean;
+  navigationSubscription
   stateObjArr = [
         {
             "id": "1",
@@ -55,7 +60,9 @@ export class EditEventComponent implements OnInit {
   constructor(
     private alertService: AlertService,
     private eventService : EventService, 
-    private router : Router) {
+    private router : Router,
+    private matDialog : MatDialog,
+    private route:ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -65,6 +72,7 @@ export class EditEventComponent implements OnInit {
     // other options...
     dateFormat: 'yyyy-mm-dd',
   };
+  
 
   showAlerts(): void{
        // For normal messages
@@ -76,8 +84,16 @@ export class EditEventComponent implements OnInit {
   }
 
   onSubmit(value: any,eventId){
-    console.log(eventId)
-    this.updateEventObj = value
+    console.log(value)
+    console.log(value.dateEvent.formatted)
+    this.updateEventObj = {
+      "activityName": value.activityName, 
+      "amount":value.amount, 
+      "dateEvent":value.dateEvent.formatted, 
+      "description":value.description, 
+      "location": value.location, 
+      "imageUrl": value.imageUrl 
+    }
     this.eventService.updateExistingEvent(this.updateEventObj,eventId)
     .subscribe(res => {
       this.showAlerts();
@@ -89,6 +105,19 @@ export class EditEventComponent implements OnInit {
     },err => {
       this.showError(err)
         console.log(err)
+    })
+  }
+
+  onDeleteEvent(id){
+    let dialogRef = this.matDialog.open(DeleteEventModalComponent);
+    dialogRef.afterClosed().subscribe( result => {
+      if(result != 'false'){
+      this.eventService.deleteExistingEvent(id)
+      .subscribe(res => {
+        console.log(res)
+        location.reload();
+        })
+      }     
     })
   }
 

@@ -1,29 +1,22 @@
 <div class="row">
   <div class="container">
-    <div class="card" *ngIf="isSelectedInfo">
+    <div class="card mx-5" style="margin-top: 110px;">
       <div class="card-header">
-        Update Activities
+        Create Activities
       </div>
       <div class="card-body">
-          <form #updateEvent="ngForm" name="form" (ngSubmit)="updateEvent.valid && onSubmit(updateEvent.value,createEventObj._id)">
+          <form #createEvent="ngForm" name="form" (ngSubmit)="createEvent.valid && onSubmit(createEvent.value, createEvent)">
             <div class="form-row mb-3">
-              <!-- <div class="col-md-6" [hidden]=true>
-                <label for="_id">Id</label>
-                <input type="text" class="form-control is-vaild" id="_id" name="_id" required ngModel [(ngModel)]="createEventObj._id">
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-              </div> -->
               <div class="col-md-6">
                 <label for="activityName">Name of Activity</label>
-                <input type="text" class="form-control is-vaild" id="activityName" name="activityName" required ngModel [(ngModel)]="createEventObj.activityName">
+                <input  type="text" class="form-control is-vaild" id="activityName" name="activityName" placeholder="activity Name" value="" required ngModel>
                 <div class="valid-feedback">
                   Looks good!
                 </div>
               </div>
               <div class="col-md-6">
                   <label for="location">Location</label>
-                  <select class="custom-select" id="location" name="location" ngModel [(ngModel)]="createEventObj.location">
+                  <select class="custom-select" id="location" name="location" ngModel>
                       <option >Choose...</option>
                       <option *ngFor="let key of stateObjArr" [value]="key.name">{{key.name}}</option>
                     </select>
@@ -32,19 +25,20 @@
             <div class="form-row mb-3">
                 <div class="col-md-6">
                   <label for="dateEvent">Date</label>
-                  <input type="text" class="form-control" name="dateEvent" [(ngModel)]="createEventObj.dateEvent" >
-                  <!-- <my-date-picker name="dateEventsa " class="form-control" [options]="myDatePickerOptions" required ngModel></my-date-picker> -->
+                  <my-date-picker name="dateEvent"
+                     [options]="myDatePickerOptions" required ngModel></my-date-picker>
                   <div class="valid-feedback">
                     Looks good!
                   </div>
                 </div>
+                <!-- (ngModelChange)="onDateSelect($event)" -->
                 <div class="col-md-6">
                     <label for="amount">Entry fee</label>
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text">₹</span>
                       </div>
-                      <input type="number" class="form-control" name="amount" aria-label="Amount (to the nearest rupees)" ngModel [(ngModel)]="createEventObj.amount">
+                      <input type="number" class="form-control" name="amount" aria-label="Amount (to the nearest rupees)" ngModel>
                       <div class="input-group-append">
                         <span class="input-group-text">.00</span>
                       </div>
@@ -57,19 +51,18 @@
             <div class="form-row mb-3">
                 <div class="col-md-6">
                   <label for="description">Description</label>
-                  <textarea class="form-control" id="description" name="description" rows="3" placeholder="Event Description" ngModel [(ngModel)]="createEventObj.description"></textarea>
+                  <textarea class="form-control" id="description" name="description" rows="3" placeholder="Event Description" ngModel></textarea>
                   <div class="valid-feedback">
                     Looks good!
                   </div>
                 </div>
                 <div class="col-md-6">
                   <label for="imageUrl">Url for cover</label>
-                  <input type="text" class="form-control" id="imageUrl" name="imageUrl" ngModel [(ngModel)]="createEventObj.imageUrl">
+                  <input type="text" class="form-control" id="imageUrl" name="imageUrl" ngModel >
                 </div>
             </div>
             <ngx-alerts></ngx-alerts>
-            <button class="btn btn-success" [disabled]="updateEvent.invalid">Update</button>
-            <div>{{ updateEvent.value | json}}</div>
+            <button class="btn btn-success" type="submit" [disabled]="createEvent.invalid">Submit</button>
           </form>
       </div>
     </div>

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NormalEventComponent } from './events/normal-event.component';
-import { SpecialEventComponent } from './special-event/special-event.component';
+import { NormalEventComponent } from './events/events.component';
+import { SpecialEventComponent } from './events/special-event/special-event.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { CreateEventComponent } from './create-event/create-event.component';
-import { UpdateEventComponent } from './update-event/update-event.component';
+import { CreateEventComponent } from './events/create-event/create-event.component';
+import { UpdateEventComponent } from './events/update-event/update-event.component';
 import { AuthGuard } from './guard/auth.guard';
 
 const routes : Routes = [

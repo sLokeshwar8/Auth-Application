@@ -1,4 +1,4 @@
-import { Component, HostListener, ElementRef} from '@angular/core';
+import { Component, HostListener, ElementRef, OnInit} from '@angular/core';
 import { AuthService } from './services/auth.service'
 
 @Component({
@@ -6,10 +6,11 @@ import { AuthService } from './services/auth.service'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'AuthProject';
   navShow = false;
   dropD1 = false;
+  username = "";
   constructor(private _authService : AuthService, private _el : ElementRef){}
 
   navShowToggle(){
@@ -20,7 +21,11 @@ export class AppComponent {
   }
 
   @HostListener( 'document:click',  ['$event']) clickout(event){
-    console.log(this._el.nativeElement)
+    this._el.nativeElement.contains(event.target) ? !this.navShow : false;
+  }
+
+  ngOnInit(){
+    this.username = localStorage.getItem('username');
   }
   
 }

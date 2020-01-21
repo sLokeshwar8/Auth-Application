@@ -3,8 +3,8 @@ import { EventService } from '../services/event.service';
 
 @Component({
   selector: 'app-normal-event',
-  templateUrl: './normal-event.component.html',
-  styleUrls: ['./normal-event.component.css']
+  templateUrl: './events.component.html',
+  styleUrls: ['./events.component.css']
 })
 export class NormalEventComponent implements OnInit {
 
