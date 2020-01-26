@@ -74,3 +74,8 @@ button:focus{
 .example-card{
   padding-bottom: 0px;
 }
+
+.userIcon{
+  font-size: 46px;
+  color: #bfbfbf;
+}

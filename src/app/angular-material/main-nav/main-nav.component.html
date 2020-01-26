@@ -32,9 +32,10 @@
     <mat-nav-list [ngStyle]="{'padding-top': (isHandset$ | async) ? '0px' : '63px'}">
       <mat-card class="example-card">
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{ username }}</mat-card-title>
-          <mat-card-subtitle>Pro user</mat-card-subtitle>
+          <div mat-card-avatar *ngIf="_authService.loggedIn()" class="example-header-image"></div>
+          <div mat-card-avatar *ngIf="!_authService.loggedIn()"><i class="material-icons userIcon">account_circle</i></div>
+          <mat-card-title><p style="font-size: 14px;">{{ username }}</p></mat-card-title>
+          <mat-card-subtitle><p style="font-size: 14px;">{{ role }}</p></mat-card-subtitle>
         </mat-card-header>
       </mat-card>
       <a mat-list-item  routerLink="/events" [routerLinkActive]="['is-active']">Events</a>

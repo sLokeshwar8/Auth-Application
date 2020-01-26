@@ -10,7 +10,6 @@ export class AppComponent implements OnInit{
   title = 'AuthProject';
   navShow = false;
   dropD1 = false;
-  username = "";
   constructor(private _authService : AuthService, private _el : ElementRef){}
 
   navShowToggle(){
@@ -25,7 +24,6 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.username = localStorage.getItem('username');
   }
   
 }
