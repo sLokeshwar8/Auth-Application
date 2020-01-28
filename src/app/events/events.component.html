@@ -1,17 +1,19 @@
-<div class="container">
-  <div class="col-md-12" style="padding-bottom: 100px;height: 100%;overflow: auto;margin-top: 57px;">
-    <div class="row">
-      <div class="col-xs-12 col-sm-3 pt-4" *ngFor="let e of events" style="min-width: 270px;">
-        <div class="card">
-          <div class="imageDiv" [style.background-image]="'url(' + e.imageUrl + ')'"></div>
-          <div class="card-body" style="height: 250px;overflow: hidden;">
-            <h6 class="card-title" style="height: 50px;"><b>{{ e.activityName  }}</b></h6>
-            <p class="card-text" style="font-size: 14px;height: 70px;">{{ e.description | summary:50 }}</p>
-            <p class="card-text">Event Date: {{ e.dateEvent  | date }}</p>
-            <div class="card-read-more">
-                <a href="#" class="btn btn-link btn-block">
-                    Read More
-                </a>
+<div class="row"> 
+  <div class="container">
+    <div class="col-md-12" style="padding-bottom: 100px;height: 100%;overflow: auto;margin-top: 57px;">
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 pt-4" *ngFor="let e of events" style="min-width: 270px;">
+          <div class="card">
+            <div class="imageDiv" [style.background-image]="'url(' + e.imageUrl + ')'"></div>
+            <div class="card-body" style="height: 250px;overflow: hidden;">
+              <h6 class="card-title" style="height: 50px; font-size: 20px;"><b>{{ e.activityName  }}</b></h6>
+              <p class="card-text" style="font-size: 14px;height: 70px;">{{ e.description | summary:50 }}</p>
+              <p class="card-text">Event Date: {{ e.dateEvent  | date }}</p>
+              <div class="card-read-more">
+                  <a href="#" class="btn btn-link btn-block">
+                      Read More
+                  </a>
+              </div>
             </div>
           </div>
         </div>

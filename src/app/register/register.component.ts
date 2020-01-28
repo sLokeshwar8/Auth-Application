@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router'
+import { AlertService } from 'ngx-alerts';
 
 
 @Component({
@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   userRegisterObj={}
   constructor(private auth : AuthService,
-              private _router : Router) { }
+              private alertService : AlertService) { }
 
   ngOnInit() {
   }
@@ -27,9 +27,14 @@ export class RegisterComponent implements OnInit {
       console.log(res)
      },
      err => {
-      console.log(err)
+      console.log(err.error.text)
+      this.showAlert(err.error.text)
      }
    )
+  }
+
+  showAlert(err){
+    this.alertService.info(err)
   }
 
 }

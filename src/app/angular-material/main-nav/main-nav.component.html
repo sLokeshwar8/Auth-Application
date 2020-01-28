@@ -31,11 +31,19 @@
 
     <mat-nav-list [ngStyle]="{'padding-top': (isHandset$ | async) ? '0px' : '63px'}">
       <mat-card class="example-card">
+        <ng-container *ngIf="_authService.loggedIn(); then loggedIn; else loggedOut"></ng-container>
         <mat-card-header>
-          <div mat-card-avatar *ngIf="_authService.loggedIn()" class="example-header-image"></div>
-          <div mat-card-avatar *ngIf="!_authService.loggedIn()"><i class="material-icons userIcon">account_circle</i></div>
-          <mat-card-title><p style="font-size: 14px;">{{ username }}</p></mat-card-title>
-          <mat-card-subtitle><p style="font-size: 14px;">{{ role }}</p></mat-card-subtitle>
+          <ng-template #loggedIn>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title><p style="font-size: 14px;text-align:center;margin-bottom: 10px;">{{ _authService.loggedInUserName() }}</p></mat-card-title>
+            <mat-card-subtitle><p style="font-size: 14px;text-align:center">Pro</p></mat-card-subtitle>          
+          </ng-template>
+
+          <ng-template #loggedOut>
+            <div mat-card-avatar [ngStyle]="{border:0}"><span><i style="font-size: 85px;" class="material-icons userIcon">account_circle</i></span></div>
+            <mat-card-title><p style="font-size: 14px;text-align:center;margin-bottom: 10px;">SignUp/LogIn</p></mat-card-title>
+            <mat-card-subtitle><p style="font-size: 14px;text-align:center">Visitor</p></mat-card-subtitle>
+          </ng-template>
         </mat-card-header>
       </mat-card>
       <a mat-list-item  routerLink="/events" [routerLinkActive]="['is-active']">Events</a>
